@@ -1,0 +1,7 @@
+﻿---
+version: "3.8"
+services:
+  mongodb:
+    image: mongo:5.0
+    ports:
+      - 27018:27017

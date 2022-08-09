@@ -1,0 +1,150 @@
+<app-navbar class="navbar"></app-navbar>
+
+<ng-container>
+  <mat-sidenav-container class="account-sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened class="account-sidenav"
+                 [fixedInViewport]="true">
+      <div class="pfp-wrapper">
+        <img class="img" [src]="pfpPath" />
+        <div name="Change Profile Picture" tabindex="0" class="label-wrapper" (keyup.enter)="imageInput.click()">
+          <label class="img-input-label" for="img-input">
+            +
+            <input #imageInput
+                   id="img-input"
+                   class="img-input"
+                   type="file"
+                   accept="image/*"
+                   (change)="processFile(imageInput)">
+          </label>
+        </div>
+      </div>
+      <div class="user-name">
+        {{ user }}
+      </div>
+
+      <div class="options-list">
+        <mat-list>
+          <mat-divider></mat-divider>
+          <mat-list-item [ngClass]="{'primaryColorBG': clickedListItem === 'Account'}" style="cursor: pointer" (click)="onClickListItem('Account')">
+            <mat-icon [style.color]="(getWhiteText() || clickedListItem === 'Account') ? 'whitesmoke' : 'black'">account_circle</mat-icon>
+            <span class="options-text" [style.color]="(getWhiteText() || clickedListItem === 'Account') ? 'whitesmoke' : 'black'">Account</span>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item [ngClass]="{'primaryColorBG': clickedListItem === 'Theme'}" style="cursor: pointer" (click)="onClickListItem('Theme')">
+            <mat-icon [style.color]="(getWhiteText() || clickedListItem === 'Theme') ? 'whitesmoke' : 'black'">brush</mat-icon>
+            <span class="options-text" [style.color]="(getWhiteText() || clickedListItem === 'Theme') ? 'whitesmoke' : 'black'">Theme</span>
+          </mat-list-item>
+          <mat-list-item [ngClass]="{'primaryColorBG': clickedListItem === 'MessageHistory'}" style="cursor: pointer" (click)="onClickListItem('MessageHistory')">
+            <mat-icon [style.color]="(getWhiteText() || clickedListItem === 'MessageHistory') ? 'whitesmoke' : 'black'">history</mat-icon>
+            <span class="options-text" [style.color]="(getWhiteText() || clickedListItem === 'MessageHistory') ? 'whitesmoke' : 'black'">MessageHistory</span>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </div>
+      <div class="logout">
+        <a class="logout-button"
+           mat-raised-button
+           tabindex="0"
+           color="warn"
+           (click)="logout()"
+           routerLink="/">
+          Logout
+        </a>
+      </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div [hidden]="clickedListItem != 'Account'">
+        <h1 class="account-settings">Account Settings</h1>
+        <div class="settings-form">
+          <label> UserID </label>
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label> {{ user }} </mat-label>
+            <input #username matInput [formControl]="formControl">
+            <mat-error> Username is already taken! </mat-error>
+          </mat-form-field>
+          <label> Email </label>
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label> {{ userEmail }} </mat-label>
+            <input #email matInput>
+          </mat-form-field>
+          <button mat-raised-button
+                  color="primary"
+                  (click)="updateUserSettings(username.value, email.value)">
+            Update
+          </button>
+        </div>
+      </div>
+      <div [hidden]="clickedListItem != 'Theme'" name="Select Color Scheme" class="scheme-selector">
+        <button mat-raised-button color="accent" [matMenuTriggerFor]="menu">Select Theme</button>
+        <mat-menu #menu="matMenu">
+          <button id="0"
+                  mat-menu-item
+                  (click)="selectTheme($event)">
+            Light Blue - Light
+          </button>
+          <button id="1"
+                  mat-menu-item
+                  (click)="selectTheme($event)">
+            Light Blue - Dark
+          </button>
+          <button id="2"
+                  mat-menu-item
+                  (click)="selectTheme($event)">
+            Indigo - Light
+          </button>
+          <button id="3"
+                  mat-menu-item
+                  (click)="selectTheme($event)">
+            Indigo - Dark
+          </button>
+          <button id="4"
+                  mat-menu-item
+                  (click)="selectTheme($event)">
+            Custom - Light
+          </button>
+          <button id="5"
+                  mat-menu-item
+                  (click)="selectTheme($event)">
+            Custom - Dark
+          </button>
+          <button id="6"
+                  mat-menu-item
+                  (click)="openCustomTheme()">
+            + Create Your Own
+          </button>
+
+        </mat-menu>
+      </div>
+      <div [hidden]="clickedListItem != 'MessageHistory'">
+        <div class="message-history-wrapper" >
+          <mat-tab-group  (click)="toggleDateSelected()">
+            <mat-tab *ngFor="let stamp of timeStamps" class="tab" dynamicHeight label="{{stamp}}">
+              <div *ngIf="dateSelected">
+                <div class="messages">
+                  <div id="text"
+                       *ngFor="let val of conversations[stamp]">
+
+                    <div *ngIf="val.isFromUser">
+                      <app-chat-message [sent]="val.messageData">
+
+                      </app-chat-message>
+                      <div id="spacer"></div>
+                    </div>
+                    <div *ngIf="!val.isFromUser">
+                      <app-chat-response [received]="val.messageData">
+
+                      </app-chat-response>
+                      <div id="spacer"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </mat-tab>
+        </mat-tab-group>
+
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</ng-container>

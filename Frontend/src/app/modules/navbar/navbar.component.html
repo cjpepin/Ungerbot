@@ -1,0 +1,92 @@
+<div class="nav-wrapper" *ngIf="!mobile">
+  <mat-toolbar color="primary" class="mat-elevation-z5">
+    UngerBot
+
+    <div class="welcome">
+      Welcome {{user}}
+    </div>
+
+    <div class="nav-interactables">
+      <div *ngIf="isHomePage" class="scroll-menu-wrapper"  id="scroll-menu-div">
+        <button mat-button
+                id="scroll-menu-button"
+                class="nav-menu"
+                tabindex="0"
+                name="Navigate Button"
+                (click)="toggleScrollMenu('')"
+               >
+          Navigate
+        </button>
+        <div class="scroll-menu" id="scroll-menu" #scrollMenu>
+          <app-scroll-menu id="scroll-menu"></app-scroll-menu>
+        </div>
+
+      </div>
+      <a tabindex="0" mat-button name="Home Button" class="button" routerLink="/home" (focus)="toggleScrollMenu('home')">Home</a>
+      <a tabindex="0" *ngIf="loggedIn" mat-button name="Floor Planner Button" class="button" routerLink="/floor-planner">Floor Planner</a>
+      <!--<a tabindex="0" mat-button name="About Button" class="button" routerLink="/about" (focus)="toggleSettings('about')">About</a>-->
+      <button tabindex="0" name="Settings Button" mat-button class="settings-button" id="settings-button" (click)="toggleSettings('settings')">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" id="settings-icon">
+          settings
+        </mat-icon>
+      </button>
+      <div class="settings" id="settings" #settings>
+        <app-settings></app-settings>
+      </div>
+
+    </div>
+    
+  </mat-toolbar>
+
+  <mat-toolbar class="nav2 mat-elevation-z5" color="primary">
+    <div *ngIf="isHomePage" class="scroll-menu-wrapper2">
+         <button mat-button
+                class="nav-menu"
+                tabindex="0"
+                name="Navigate Button"
+                (keyup.enter)="toggleScrollMenu('')"
+                (click)="toggleScrollMenu('')">
+          Navigate
+        </button>
+        <div #scrollMenu>
+          <app-scroll-menu class="scroll-menu2" id="scroll-menu2"></app-scroll-menu>
+        </div>
+
+    </div>
+    <a mat-button class="button2" routerLink="/home">Home</a>
+    <a mat-button class="button2" routerLink="/about">About</a>
+
+  </mat-toolbar>
+</div>
+
+<div class="mobile-nav-wrapper" *ngIf="mobile">
+  <mat-toolbar class="mat-elevation-z5" color="primary">
+    UngerBot
+
+    <div class="mobile-welcome">
+      Welcome {{user}}
+    </div>
+
+    <button mat-button class="menu-button" (click)="toggleHamburger()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    
+
+  </mat-toolbar>
+
+  <mat-toolbar class="mobile-nav-elts mat-elevation-z5" color="primary" *ngIf="hamburgerOpen">
+    <a tabindex="0" mat-button class="button2" routerLink="/home">Home</a>
+    <a tabindex="1" mat-button class="button2" routerLink="/about">About</a>
+    <button mat-button (click)="toggleSettings('settings')">
+      <mat-icon tabindex="2" aria-activedescendantaria-hidden="false" aria-label="Example home icon">
+        settings
+      </mat-icon>
+    </button>
+    <div class="settings" id="settings">
+      <app-settings></app-settings>
+    </div>
+  </mat-toolbar>
+</div>
+
+

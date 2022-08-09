@@ -1,0 +1,115 @@
+@import '~@angular/material/theming';
+@import './styles';
+
+
+// These define my custom color codes and palettes.
+// The palettes were generated using http://mcg.mbitson.com/
+@include mat-core();
+
+
+/* For use in src/lib/core/theming/_palette.scss */
+/* For use in src/lib/core/theming/_palette.scss */
+$md-indprimary: ( 50 : #e4e7ec, 100 : #bbc3ce, 200 : #8d9bae, 300 : #5f728e, 400 : #3d5475, 500 : #1b365d, 600 : #183055, 700 : #14294b, 800 : #102241, 900 : #081630, A100 : #6a95ff, A200 : #3771ff, A400 : #044dff, A700 : #0044ea, contrast: ( 50 : #000000, 100 : #000000, 200 : #000000, 300 : #ffffff, 400 : #ffffff, 500 : #ffffff, 600 : #ffffff, 700 : #ffffff, 800 : #ffffff, 900 : #ffffff, A100 : #000000, A200 : #ffffff, A400 : #ffffff, A700 : #ffffff, ) );
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-indaccent: ( 50 : #ece7ea, 100 : #cec3cc, 200 : #ae9baa, 300 : #8e7387, 400 : #75556e, 500 : #5d3754, 600 : #55314d, 700 : #4b2a43, 800 : #41233a, 900 : #301629, A100 : #ff72d9, A200 : #ff3fcb, A400 : #ff0cbd, A700 : #f100b0, contrast: ( 50 : #000000, 100 : #000000, 200 : #000000, 300 : #ffffff, 400 : #ffffff, 500 : #ffffff, 600 : #ffffff, 700 : #ffffff, 800 : #ffffff, 900 : #ffffff, A100 : #000000, A200 : #000000, A400 : #ffffff, A700 : #ffffff, ) );
+/* For use in src/lib/core/theming/_palette.scss */
+$md-indwarn: ( 50 : #fae5e8, 100 : #f2bec5, 200 : #e9939f, 300 : #e06878, 400 : #da475b, 500 : #d3273e, 600 : #ce2338, 700 : #c81d30, 800 : #c21728, 900 : #b70e1b, A100 : #ffe5e6, A200 : #ffb2b6, A400 : #ff7f86, A700 : #ff656e, contrast: ( 50 : #000000, 100 : #000000, 200 : #000000, 300 : #000000, 400 : #ffffff, 500 : #ffffff, 600 : #ffffff, 700 : #ffffff, 800 : #ffffff, 900 : #ffffff, A100 : #000000, A200 : #000000, A400 : #000000, A700 : #000000, ) );
+
+
+//light indigo
+$ind-primary: mat-palette($md-indprimary, 500);
+$ind-accent: mat-palette($md-indaccent, 500);
+$ind-warn: mat-palette($md-indwarn, 500);
+
+$ind-light-theme: mat-light-theme($ind-primary, $ind-accent, $ind-warn);
+
+$ind-dark-primary: mat-palette($md-indprimary, 900);
+$ind-dark-accent: mat-palette($md-indaccent, 900);
+$ind-dark-warn: mat-palette($md-indwarn, 900);
+
+$ind-dark-theme: mat-dark-theme($ind-dark-primary, $ind-dark-accent, $ind-dark-warn);
+
+$lb-primary: mat-palette($mat-light-blue, 800);
+$lb-accent: mat-palette($mat-pink, 800);
+$lb-warn: mat-palette($mat-red, 800);
+
+$lb-light-theme: mat-light-theme($lb-primary, $lb-accent, $lb-warn);
+
+$lb-dark-primary: mat-palette($mat-light-blue, 900);
+$lb-dark-accent: mat-palette($mat-pink, 900);
+$lb-dark-warn: mat-palette($mat-red, 900);
+
+$lb-dark-theme: mat-dark-theme($lb-dark-primary, $lb-dark-accent, $lb-dark-warn);
+
+@include theme-color-grabber($ind-light-theme);
+@include angular-material-theme($ind-light-theme);
+
+.ind-light {
+  @include theme-color-grabber($ind-light-theme);
+  @include angular-material-theme($ind-light-theme);
+}
+.ind-dark {
+  @include theme-color-grabber($ind-dark-theme);
+  @include angular-material-theme($ind-dark-theme);
+}
+.lb-light {
+
+  @include theme-color-grabber($lb-light-theme);
+  @include angular-material-theme($lb-light-theme);
+}
+.lb-dark {
+  background-color: darkgrey;
+
+  @include theme-color-grabber($lb-dark-theme);
+  @include angular-material-theme($lb-dark-theme);
+}
+
+@function generate-custom-theme($pl, $pd, $al, $ad, $wl, $wd, $dark) {
+  $primary: ( Main: $pl, Light:$pl, Dark: $pd, contrast: ( Main: #000, Light: #000, Dark: #fff ));
+  $accent: ( Main: $al, Light:$al, Dark: $ad, contrast: ( Main: #000, Light: #000, Dark: #fff ));
+  $warn: ( Main: $wl, Light:$wl, Dark: $wd, contrast: ( Main: #000, Light: #000, Dark: #fff ));
+
+  $custom-theme-primary: mat-palette($primary, Main, Light, Dark);
+  $custom-theme-accent: mat-palette($accent, Main, Light, Dark);
+  $custom-theme-warn: mat-palette($warn, Main, Light, Dark);
+
+  @if $dark == true {
+    $custom-theme: mat-dark-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+    @return $custom-theme;
+  }
+  @else {
+    $custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+    @return $custom-theme;
+  }
+
+}
+
+
+.custom-light {
+  $pl: var(--primary-light);
+  $pd: var(--primary-dark);
+  $al: var(--accent-light);
+  $ad: var(--accent-dark);
+  $wl: var(--warn-light);
+  $wd: var(--warn-dark);
+  $dark: false;
+  $custom-theme: generate-custom-theme($pl,$pd,$al,$ad,$wl,$wd, $dark);
+  @include theme-color-grabber($custom-theme);
+  @include angular-material-theme($custom-theme);
+}
+.custom-dark {
+  $pl: var(--primary-light);
+  $pd: var(--primary-dark);
+  $al: var(--accent-light);
+  $ad: var(--accent-dark);
+  $wl: var(--warn-light);
+  $wd: var(--warn-dark);
+  $dark: true;
+  $custom-theme: generate-custom-theme($pl,$pd,$al,$ad,$wl,$wd, $dark);
+  @include theme-color-grabber($custom-theme);
+  @include angular-material-theme($custom-theme);
+}
+
+
+

@@ -1,0 +1,126 @@
+
+.nav-wrapper {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+
+  .welcome {
+    position: relative;
+    left: 10vw;
+  }
+
+  .nav-interactables {
+    display: flex;
+    position: absolute;
+    right: 5px;
+
+    .scroll-menu-wrapper {
+      .scroll-menu {
+        max-width: 0;
+        min-height: 21rem;
+        visibility: hidden;
+        background-color: whitesmoke;
+        position: fixed;
+        right: 220px;
+        margin-top: 4px;
+        border-radius: 2px;
+        box-shadow: 0.5px 5 5px 1px black;
+        z-index: 5;
+      }
+    }
+
+    .scroll-menu2 {
+      max-width: 0;
+      min-height: 21rem;
+      visibility: hidden;
+      
+    }
+
+  }
+}
+
+
+.settings {
+  color: black;
+  position: fixed;
+  right: 5px;
+  top: 69px;
+  min-height: 15rem;
+  width: 0;
+  visibility: hidden;
+  background-color: whitesmoke;
+  padding: 15px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 8px 1px black;
+  z-index: 10;
+}
+
+.nav2 {
+  display: none;
+}
+.nav-menu:focus .scroll-menu{
+  max-width: 40rem;
+  visibility: visible;
+}
+
+@media screen and (max-width: 770px){
+
+}
+
+
+.spacer{
+  height: 50px;
+  width: 70px;
+  position: absolute;
+  top: 0px;
+  left: -10px;
+}
+
+
+
+
+@media screen and (max-width: 650px) {
+  .button {
+    display: none;
+  }
+
+  .nav2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .scroll-menu2 {
+      max-width: 0;
+      min-height: 21rem;
+      visibility: hidden;
+    }
+  }
+
+  .settings {
+    top: 7.25rem;
+  }
+
+  .scroll-menu-wrapper {
+    display: none;
+  }
+}
+
+.menu-button{
+    position: absolute;
+    right: 0px;
+
+}
+
+.mobile-welcome {
+  position: relative;
+  left: 10vw;
+  max-width: 200px;
+  white-space: pre-wrap;
+}
+
+.mobile-nav-elts{
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}
+

@@ -1,0 +1,10 @@
+<div class="popup-wrapper">
+  <h2 mat-dialog-title>Please Re-enter Your Password</h2>
+  <p class="error">{{error}}</p>
+  <mat-dialog-content class="popup-form">
+    <input #password matInput type="password" (keyup.enter)="validateUser(password.value)" />
+    <button mat-button  color="primary" (click)="validateUser(password.value)">Submit</button>
+    <button mat-button mat-dialog-close color="warn" (click)="cancel()">Cancel</button>
+  </mat-dialog-content>
+
+</div>

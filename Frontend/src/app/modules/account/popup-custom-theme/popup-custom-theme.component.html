@@ -1,0 +1,25 @@
+<div class="popup-wrapper">
+  <h2 class="title" mat-dialog-title>Please Select The Colors You Would Like To Use</h2>
+  <p class="error">{{error}}</p>
+  <mat-dialog-content class="popup-form">
+    <label>Primary - Light</label>
+    <input [(colorPicker)]="plColor" [style.background]="plColor"/>
+    <label>Primary - Dark</label>
+    <input [(colorPicker)]="pdColor" [style.background]="pdColor"/>
+    <label>Accent - Light</label>
+    <input [(colorPicker)]="alColor" [style.background]="alColor"/>
+    <label>Accent - Dark</label>
+    <input [(colorPicker)]="adColor" [style.background]="adColor"/>
+    <label>Warn - Light</label>
+    <input [(colorPicker)]="wlColor" [style.background]="wlColor" />
+    <label>Warn - Dark</label>
+    <input [(colorPicker)]="wdColor" [style.background]="wdColor"/>
+    <div class="buttons">
+      <button mat-stroked-button color="primary" (click)="submitTheme(plColor, pdColor, alColor, adColor, wlColor, wdColor)">Submit</button>
+      <button mat-stroked-button mat-dialog-close color="warn" (click)="cancel()">Cancel</button>
+
+    </div>
+  </mat-dialog-content>
+
+
+</div>

@@ -1,0 +1,21 @@
+*{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.uh-oh{
+    margin-top: 20vh;
+    font-size: 100px;
+}
+.explanation{
+    margin-top: 20vh;
+    font-size: 40px;
+}
+.link{
+    margin-top: 10vh;
+}
+.text{
+    padding: 2vh;
+}

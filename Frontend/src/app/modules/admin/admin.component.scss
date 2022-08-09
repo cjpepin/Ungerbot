@@ -1,0 +1,53 @@
+.nav{
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+.admin-wrapper {
+  min-height: 100vh;
+
+  .error-wrapper {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-around;
+
+    ::-webkit-scrollbar {
+      width: 0.4rem;
+    }
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+    }
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+
+    .errors-title {
+      padding: 0.25rem;
+      margin-top: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      min-width: 20rem;
+    }
+
+    .errors {
+      position: relative;
+      top: 5rem;
+      margin: 2rem;
+      max-height: 30rem;
+      max-width: 22rem;
+      overflow-y: auto;
+      border-radius: 0.25rem;
+      box-shadow: 4px 4px 6px -1px rgba(0,0,0,0.8)
+    }
+  }
+
+  .test-error-button {
+    margin-top: 5rem;
+  }
+}

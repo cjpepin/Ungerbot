@@ -1,0 +1,61 @@
+.error-wrapper {
+  min-height: 2rem;
+  max-width: 20rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.1rem;
+  box-shadow: 4px 4px 6px -4px rgba(0,0,0,0.9);
+  font-size: 1.2em;
+
+  .error-header {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-around;
+    padding: 0.25rem;
+    border-radius: 0.15rem;
+
+    .error-id {
+    }
+
+    .error-count {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      left: 87%;
+      bottom: 5.5rem;
+      width: 2rem;
+      height: 2rem;
+      text-align: center;
+      border-radius: 20%;
+      background-color: darkgoldenrod;
+    }
+
+    .kick-user-count {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      left: 87%;
+      bottom: 0.6rem;
+      width: 2rem;
+      height: 2rem;
+      text-align: center;
+      border-radius: 20%;
+      background-color: darkgoldenrod;
+    }
+  }
+
+  .error-body {
+    margin-top: 1rem;
+    overflow-wrap: anywhere;
+  }
+
+  .error-delete {
+    position: relative;
+    left: 80%;
+    max-height: 2rem;
+    max-width: 1rem;
+  }
+}

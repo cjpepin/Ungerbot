@@ -1,0 +1,21 @@
+.spacer {
+  height: 20rem;
+}
+
+.img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  max-width: 75vw;
+  overflow-y: hidden;
+  z-index: 0;
+}
+
+@media screen and (max-width: 1200px){
+    .img{
+        max-width: 90vw;
+    }
+}

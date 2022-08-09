@@ -1,0 +1,185 @@
+
+<div tabindex="0" id="chat-button-wrapper" (keyup.enter)="toggleChat()">
+  <!-- Always show button, but only show chat if the button has been selected -->
+  <!-- <div id="chat-box" [@chatEnabledState]="stateName">
+
+      </div>
+  -->
+
+  <button mat-mini-fab color="primary" (click)="toggleChat()">Chat</button>
+
+  <div *ngIf="notifsToShow">
+    <app-chat-notifs></app-chat-notifs>
+  </div>
+</div>
+
+<div class="button-container primaryColorBG" id="chat-box" [@chatEnabledState]="stateName">
+  
+  <div class="message-wrapper">
+
+    <div class="nav-wrapper">
+
+      <img id="logo" src="assets/images/ungerboeck.jpg" />
+      <div id="text">
+        <span id="identifier">You are speaking with</span>
+        <p id="speaker">Ungerbot</p>
+      </div>
+      <div class="help">
+        <button class="help-button" (click)="toggleHelpMenu()">?</button>
+      </div>
+
+      <button (click)="resetChat()" class="back-button" *ngIf="usingChatBox || usingButtons"><mat-icon>keyboard_backspace</mat-icon></button>
+
+      <div #helpMenu class="help-menu" [@helpEnabledState]="helpState">
+        <app-chat-nav-help></app-chat-nav-help>
+      </div>
+    </div>
+
+    <div id="messages" (scroll)="checkIsAtBottom()">
+      <div *ngIf="checkType() === 'intro'">
+        <div id="text"
+             *ngFor="let val of totalDiaLog"
+             [ngSwitch]="val.type">
+
+          <ng-template ngSwitchCase="intro-message">
+            <app-chat-message [sent]="val.value">
+
+            </app-chat-message>
+            <div id="spacer"></div>
+          </ng-template>
+
+          <ng-template ngSwitchCase="intro-response">
+            <app-chat-response [received]="val.value">
+
+            </app-chat-response>
+          </ng-template>
+
+          <ng-template ngSwitchCase="intro-button">
+            <app-chat-dialogue-button [input]="val.value">
+
+            </app-chat-dialogue-button>
+          </ng-template>
+
+          <ng-template ngSwitchCase="in-progress">
+            <div class="typing-indicator">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </ng-template>
+
+          <ng-template ngSwitchCase="chat-spacer">
+            <p class="chat-end">{{val.value}}</p>
+          </ng-template>
+        </div>
+      </div>
+
+      <div *ngIf="checkType() === 'chat'">
+        <div id="text"
+             *ngFor="let val of totalDiaLog"
+             [ngSwitch]="val.type">
+
+          <ng-template ngSwitchCase="chat-message">
+            <app-chat-message [sent]="val.value">
+
+            </app-chat-message>
+            <div id="spacer"></div>
+          </ng-template>
+
+          <ng-template ngSwitchCase="chat-response">
+            <app-chat-response [received]="val.value">
+
+            </app-chat-response>
+          </ng-template>
+
+          <ng-template ngSwitchCase="chat-button">
+            <app-chat-dialogue-button [input]="val.value">
+
+            </app-chat-dialogue-button>
+          </ng-template>
+
+          <ng-template ngSwitchCase="in-progress">
+            <div class="typing-indicator">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </ng-template>
+
+          <ng-template ngSwitchCase="chat-spacer">
+            <p class="chat-end">{{val.value}}</p>
+          </ng-template>
+        </div>
+      </div>
+
+      <div *ngIf="checkType() === 'click'">
+        <div id="text"
+             *ngFor="let val of totalDiaLog"
+             [ngSwitch]="val.type">
+
+          <ng-template ngSwitchCase="click-message">
+            <app-chat-message [sent]="val.value">
+
+            </app-chat-message>
+            <div id="spacer"></div>
+          </ng-template>
+
+          <ng-template ngSwitchCase="click-response">
+            <app-chat-response [received]="val.value">
+
+            </app-chat-response>
+          </ng-template>
+
+          <ng-template ngSwitchCase="click-button">
+            <app-chat-dialogue-button [input]="val.value">
+
+            </app-chat-dialogue-button>
+          </ng-template>
+
+          <ng-template ngSwitchCase="in-progress">
+            <div class="typing-indicator">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </ng-template>
+
+          <ng-template ngSwitchCase="chat-spacer">
+            <p class="chat-end">{{val.value}}</p>
+          </ng-template>
+        </div>
+      </div>
+
+      <div *ngIf="!isAtBottom && usingChatBox" class="down-arrow">
+        <i id="down-arrow" class="material-icons">arrow_downward</i>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="form" class='primaryColorBG'>
+    <mat-form-field appearance="outline" class='primaryColorBG' color="accent">
+      <mat-label>Comment</mat-label>
+      <textarea 
+                style="color: white"
+                (keyup.enter)="sendMessage(input); checkIsAtBottom();"
+                #input
+                matInput
+                [formControl]="textFormControl"
+                [errorStateMatcher]="matcher"
+                ></textarea>
+      <mat-error *ngIf="textFormControl.hasError('required')">
+        Message must <strong>not</strong> be empty.
+      </mat-error>
+      <!-- <mat-hint>Must be at least 2 words</mat-hint>-->
+    </mat-form-field>
+    <button mat-raised-button
+            class="submit"
+            color="accent"
+            [disabled]="input.value === ''"
+            (click)="sendMessage(input); checkIsAtBottom();">
+      Send
+    </button>
+  </div>
+
+</div>

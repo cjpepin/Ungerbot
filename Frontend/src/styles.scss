@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+//Specifically when using chrome, do not show the scrollbar or the screen will shake
+//when hovering over chat box
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+  body::-webkit-scrollbar{
+      display: none;
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import '~@angular/material/theming';
+
+@mixin theme-color-grabber($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  .primaryColorBG {
+    background-color: mat-color($primary)
+  }
+
+  .accentColorBG {
+    background-color: mat-color($accent)
+  }
+
+  .warnColorBG {
+    background-color: mat-color($warn)
+  }
+}
+
+
+:root {
+  --primary-light: #ffffff;
+  --primary-dark: #ffffff;
+  --accent-light: #ffffff;
+  --accent-dark: #ffffff;
+  --warn-light: #ffffff;
+  --warn-dark: #ffffff;
+}
+
+.mat-input-invalid .mat-input-placeholder {
+  color: red;
+}
+
+.mat-input-invalid .mat-input-ripple {
+  background-color: red;
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar {
+    display: none;
+}

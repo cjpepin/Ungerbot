@@ -1,0 +1,264 @@
+
+
+#chat-button-wrapper {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  align-items: flex-end;
+
+  button {
+    height: 60px;
+    width: 60px;
+  }
+}
+
+.button-container {
+  position: absolute;
+  display: none;
+  bottom: 10px;
+  right: 75px;
+  height: 100%;
+  width: 80%;
+  border-radius: 8px;
+  box-shadow: 1px 1px 12px rgba(0,0,0,0.4);
+  color: white;
+
+  .message-wrapper {
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin-top: 10px;
+      height: 5rem;
+      width: 90%;
+
+      .back-button{
+          position: absolute;
+          right: 0.5rem;
+          top: 1rem;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          max-width: 1.5rem;
+          max-height: 1rem;
+      }
+      #logo {
+        width: 4.5rem;
+        height: 4.5rem;
+        border-radius: 50%;
+        box-shadow: 2px 2px;
+      }
+
+      #text {
+        width: 175px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        #speaker {
+          margin-top: 0.5rem;
+          font-size: 2.25rem;
+        }
+      }
+
+      .help {
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        right: 10px;
+        top: 70px;
+
+        .help-button {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      .help-menu {
+          visibility: hidden;
+        width: 18rem;
+        height: 12.5rem;
+        background-color: rgb(0,0,0,0.9);
+        border-radius: 6px;
+        padding: 8px 0;
+        position: absolute;
+        z-index: 1;
+        top: 95px;
+        right: 5px;
+        overflow-y: scroll;
+      }
+    }
+
+    #messages {
+      position: relative;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      left: 10px;
+      width: 90%;
+      height: 275px;
+      padding: 4px;
+      background-color: whitesmoke;
+      border: solid 2px #2F7AE5;
+      border-radius: 3px;
+      overflow-y: auto;
+
+      #text {
+        background-color: whitesmoke;
+      }
+
+      #spacer {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .chat-end {
+        text-align: center;
+        font-size: 0.625rem;
+        line-height: 0.8;
+        max-width: 75%;
+        margin-left: 12.5%;
+        padding: 0.25rem 0.03125rem 0.125px;
+        background-color: darkgrey;
+        border-radius: 0.125rem;
+        box-shadow: 0.25rem 0.25rem 0.25rem -0.25rem rgba(0,0,0,0.8);
+      }
+    }
+
+    #messages::-webkit-scrollbar {
+      display: none;
+    }
+
+    .down-arrow {
+      background-color: transparent;
+      color: black;
+      height: 20px;
+      width: 20px;
+      position: fixed;
+      right: 105px;
+      bottom: 135px;
+    }
+  }
+
+  #form {
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
+    padding-top: 5px;
+    border-radius: 5px;
+
+
+    .input {
+      background: whitesmoke;
+    }
+
+    .text-area {
+      color: white;
+    }
+
+    .submit {
+      max-height: 2.5rem;
+      margin-top: 1rem;
+    }
+  }
+}
+
+
+$dark-blue: #0836C1;
+
+.typing-indicator {
+  background-color: $dark-blue;
+  width: 20px;
+  border-radius: 25%/50%;
+  padding: 0.6rem 0.8rem 0.6rem;
+  margin-left: 0.5rem;
+  position: relative;
+  display: flex;
+  transform:scale(-1,1);
+  /*animation: 2s pulse infinite ease-out;*/
+}
+
+.typing-indicator::before,
+.typing-indicator::after {
+  content: '';
+  position: absolute;
+  bottom: -0.05rem;
+  left: 2.4rem;
+  height: 0.7rem;
+  width: 0.7rem;
+  border-radius: 50%;
+  background-color: $dark-blue;
+}
+
+.typing-indicator::after {
+  height: 0.4rem;
+  width: 0.4rem;
+  left: 3rem;
+  bottom: -0.075rem;
+}
+
+.typing-indicator span {
+  height: 0.4rem;
+  width: 0.4rem;
+  float: left;
+  margin: 0 1px;
+  background-color: darkseagreen;
+  display: block;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.typing-indicator span:nth-child(1) {
+  animation: 1s blink infinite .3333s;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation: 1s blink infinite .6666s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation: 1s blink infinite .9999s;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+
+/*
+
+#message-container {
+  width: 200px;
+}*/
+
+@media screen and (max-width: 350px){
+    .button-container{
+        bottom: 70px;
+        right: 5px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

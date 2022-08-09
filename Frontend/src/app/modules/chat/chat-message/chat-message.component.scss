@@ -1,0 +1,29 @@
+
+$dark-blue: #0836C1;
+
+.message {
+  position: relative;
+  right: -27%;
+  min-height: 20px;
+  border-radius: 4px;
+  padding: 5px;
+  max-width: 170px;
+  color: white;
+  background-color: $dark-blue;
+  overflow-wrap: break-word;
+  box-shadow: 0.25rem 0.25rem 0.25rem -0.25rem rgba(0,0,0,0.8);
+}
+
+
+.tail:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid $dark-blue;
+  border-right: 10px solid transparent;
+  border-top: 10px solid $dark-blue;
+  border-bottom: 10px solid transparent;
+  right: -12px;
+  top: 6px;
+}

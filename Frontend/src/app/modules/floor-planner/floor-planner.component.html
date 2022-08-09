@@ -1,0 +1,108 @@
+<app-navbar class="nav"></app-navbar>
+<div class="floor-planner-wrapper" mat-app-background>
+  <div class="top-nav">
+    <button mat-raised-button (click)="saveScene(true)">
+      <mat-icon>save</mat-icon>
+    </button>
+
+    <button mat-raised-button (click)="createNewSpace()">
+      <mat-icon>library_add</mat-icon>
+      New Space
+    </button>
+
+    <button mat-raised-button color="accent" [matMenuTriggerFor]="menu">Scenes List</button>
+    <mat-menu #menu="matMenu">
+      <button *ngFor="let scene of scenesList; let i = index;"
+              id="{{i}}"
+              mat-menu-item
+              #button
+              (click)="toggleScene($event)">
+        {{scene}}
+      </button>
+    </mat-menu>
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>Event Space Name: {{spaceName}}</mat-label>
+      <input style="color: white" #name matInput (change)="updateSceneName(name.value)" />
+    </mat-form-field>
+    <div class="help-wrapper">
+      <button mat-raised-button (click)="toggleHelpMenu()">
+        <mat-icon>help</mat-icon>
+      </button>
+
+      <div id="help" class="help-menu">
+        <strong>Controls</strong>
+        <p>e - Toggle edit/top view and drag/3D mode</p>
+        <p>Left Click + drag - move camera position in the current plane</p>
+        <p>Right Click + drag - rotate camera position from focal point</p>
+        <p>Left Click (in top view) - Enables element translate along x/z axis</p>
+        <p>Shift + Left Click - Enabled scale, translate, and rotate controls</p>
+        <p>s - enables scaling</p>
+        <p>r - enables rotation</p>
+        <p>t - enables translating</p>
+        <strong>Buttons</strong>
+        <p>File Icon - save current scene</p>
+        <p>New Space Icon - create new space</p>
+        <p>Scenes List - Dropdown list of all available scenes</p>
+        <p>Even Space Input - Change the name of the current scene</p>
+        <strong>Adding Objects</strong>
+        <p>To add an object, click on the desired image on the left side nav and it will appear in your scene.</p>
+      </div>
+    </div>
+    
+    <!--<div *ngFor="let scene of scenesList; let i = index;">
+    <div class="scene-button-wrapper" #buttonWrapper ></div>
+    <button mat-raised-button #sceneSelector >
+    </button>
+  </div>-->
+
+  </div>
+  <div class="bottom">
+    <div class="side-nav">
+      <div class="object-option" id="circle-table" (click)="createObject('circle-table')">
+        <img src="../../../assets/images/circle-table.png" />
+      </div>
+      <div class="object-option" (click)="createObject('stage')">
+        <img src="../../../assets/images/stage.png" />
+      </div>
+      <div class="object-option" (click)="createObject('deck_chair')">
+        <img src="../../../assets/images/lawn-chair.png" />
+      </div>
+      <div class="object-option" (click)="createObject('box')">
+        <img src="../../../assets/images/floor.png" />
+      </div>
+      <div class="object-option" (click)="createObject('computer-chair')">
+        <img src="../../../assets/images/computer-chair.png" />
+      </div>
+      <div class="object-option" (click)="createObject('desk')">
+        <img src="../../../assets/images/desk.png" />
+      </div>
+      <div class="object-option" (click)="createObject('kitchen-chair')">
+        <img src="../../../assets/images/kitchen-chair.png" />
+      </div>
+      <div class="object-option" (click)="createObject('ping-pong')">
+        <img src="../../../assets/images/ping-pong.png" />
+      </div>
+      <div class="object-option" (click)="createObject('monitor')">
+        <img src="../../../assets/images/monitor.png" />
+      </div>
+
+    </div>
+
+      <div class="canvas-elts">
+        <div id="myProgress" *ngIf="isLoading">
+          <div #myBar id="myBar">{{loadBarPercent}}%</div>
+        </div>
+        <div class="select-scene-wrapper" *ngIf="sceneInd === null">
+          <span class="select-scene-text">Select a Scene</span>
+        </div>
+        <div class="mode" *ngIf="sceneInd != null">
+          <span *ngIf="editMode">Edit/Top View</span>
+          <span *ngIf="!editMode">Drag</span>
+        </div>
+        <canvas tabIndex="0" #canvas id="canvas" >
+        </canvas>
+      </div>
+    </div>
+
+
+</div>

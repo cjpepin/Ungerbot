@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.5.26-alpha">
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>07408c26-c88c-45b4-b605-767a77e82617</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupCommand>ng serve --proxy-config proxy.config.json</StartupCommand>
+    <JavaScriptTestFramework>Jasmine</JavaScriptTestFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="src\assets\objects\" />
+  </ItemGroup>
+</Project>

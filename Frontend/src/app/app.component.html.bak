@@ -1,0 +1,5 @@
+
+<div class="app-wrapper"  (click)="checkToken()">
+  <router-outlet></router-outlet>
+</div>
+

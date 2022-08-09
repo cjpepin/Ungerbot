@@ -1,0 +1,24 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+  margin-top: 25vh;
+  padding: 100px;
+}
+
+.log-in-title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+button{
+    margin: 5px;
+}
+
+.error{
+    color: red;
+    margin-bottom: 10px;
+    max-width: 300px;
+}

@@ -1,0 +1,44 @@
+<app-navbar class="nav"></app-navbar>
+<div class="admin-wrapper" mat-app-background>
+
+  <div class="error-wrapper">
+
+    <div class="errors primaryColorBG">
+      <div class="errors-title">Errors:</div>
+
+      <div *ngFor="let error of errors">
+        <app-error [error]="error" [errorType]="'errors'"></app-error>
+      </div>
+    </div>
+
+    <div class="errors primaryColorBG">
+      <div class="errors-title">Top Errors:</div>
+      <div *ngFor="let error of topErrors">
+        <app-error [error]="error" [errorType]="'topErrors'"></app-error>
+      </div>
+    </div>
+
+    <div class="errors primaryColorBG">
+      <div class="errors-title">Buggy Users:</div>
+
+      <div *ngFor="let kick of userKicks">
+        <app-error [error]="kick" [errorType]="'userKicks'"></app-error>
+      </div>
+    </div>
+
+  </div>
+  <!---->
+  <button mat-raised-button
+          class="test-error-button"
+          color="primary"
+          (click)="sendTestError()">
+    Send Test Error
+  </button>
+  <button mat-raised-button
+          class="test-error-button"
+          color="primary"
+          (click)="getTestError()">
+    Get Test Error
+  </button>
+
+</div>

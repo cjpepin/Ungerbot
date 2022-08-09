@@ -1,0 +1,47 @@
+<div class="error-wrapper accentColorBG" *ngIf="errorType === 'errors'">
+  <div class="error-header warnColorBG">
+    <div class="error-id">
+      Error Id: {{error.id}}
+    </div>
+    <div class="error-user">
+      User: {{error.userName}}
+    </div>
+  </div>
+  <div class="error-body" >
+    {{error.errorMessage}}
+  </div>
+  <button (click)="deleteError($event)" class="error-delete" mat-button id="{{error.id}}">
+    <mat-icon aria-hidden="false" aria-label="Delete Icon" id="{{error.id}}">delete</mat-icon>
+  </button>
+</div>
+
+<div class="error-wrapper accentColorBG" *ngIf="errorType === 'topErrors'">
+  <div class="error-header warnColorBG">
+    <div class="error-id">
+      Error Title: {{error.title}}
+    </div>
+    <div class="error-user">
+      Error Code: {{error.status}}
+    </div>
+    <div class="error-user">
+      Error Trace Id: {{error.traceId}}
+    </div>
+    <div class="error-count primaryColorBG">
+      {{count}}
+    </div>
+  
+  </div>
+  
+</div>
+
+<div class="error-wrapper accentColorBG" *ngIf="errorType === 'userKicks'">
+  <div class="error-header warnColorBG">
+    <div class="kick-user-id">
+      User: {{user}}
+    </div>
+    <div class="kick-user-count primaryColorBG">
+      {{count}}
+    </div>
+  </div>
+
+</div>

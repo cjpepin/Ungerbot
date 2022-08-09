@@ -1,0 +1,81 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { ChatBoxComponent } from './modules/chat/chat-box/chat-box.component';
+import { ChatButtonComponent } from './modules/chat/chat-button/chat-button.component';
+import { ChatMessageComponent } from './modules/chat/chat-message/chat-message.component';
+import { MessageService } from './shared/messages.service';
+import { ResponseService } from './shared/response.service';
+import { ApiService } from './shared/api.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import MaterialModule  from './material/material.module';
+import { ChatNavComponent } from './modules/chat/chat-nav/chat-nav.component';
+import { ChatNavCloseButtonComponent } from './modules/chat/chat-nav-close-button/chat-nav-close-button.component';
+import { ChatResponseComponent } from './modules/chat/chat-response/chat-response.component';
+import { NavbarComponent } from './modules/navbar/navbar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { AboutComponent } from './modules/about/about.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HomeComponent } from './modules/home/home/home.component';
+import { LoginComponent } from './modules/login/login.component';
+import { ChatBoxService } from './shared/chatbox.service';
+import { YouveBeenKickedComponent } from './modules/youve-been-kicked/youve-been-kicked.component';
+import { ChatNavHelpComponent } from './modules/chat/chat-nav-help/chat-nav-help.component';
+import { CreateAccountComponent } from './modules/login/create-account/create-account.component';
+import { TokenInterceptor } from './token.interceptor';
+import { AuthGuard } from './shared/auth.guard';
+import { SettingsComponent } from './modules/navbar/settings/settings.component';
+import { SettingsService } from './shared/settings.service';
+import { FormsModule } from '@angular/forms';
+import { HomeTopComponent } from './modules/home/home-top/home-top.component';
+import { HomeRightComponent } from './modules/home/home-right/home-right.component';
+import { HomeLeftComponent } from './modules/home/home-left/home-left.component';
+import { HomeSpacerComponent } from './modules/home/home-spacer/home-spacer.component';
+import { ChatNotifsComponent } from './modules/chat/chat-notifs/chat-notifs.component';
+import { NotificationsService } from './shared/notifications.service';
+@NgModule({
+  declarations: [
+    AppComponent,
+    ChatBoxComponent,
+    ChatButtonComponent,
+    ChatMessageComponent,
+    ChatNavComponent,
+    ChatNavCloseButtonComponent,
+    ChatResponseComponent,
+    NavbarComponent,
+    AboutComponent,
+    HomeComponent,
+    LoginComponent,
+    YouveBeenKickedComponent,
+    ChatNavHelpComponent,
+    CreateAccountComponent,
+    SettingsComponent,
+    HomeTopComponent,
+    HomeRightComponent,
+    HomeLeftComponent,
+    HomeSpacerComponent,
+    ChatNotifsComponent
+  ],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    [MessageService, ResponseService, ApiService, ChatBoxService, SettingsService, NotificationsService]
+  ],
+  imports: [
+    MaterialModule,
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    HttpClientModule,
+    FormsModule
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

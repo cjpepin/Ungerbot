@@ -1,0 +1,176 @@
+.navbar{
+    position: fixed;
+    top: 0;
+}
+$height: 10rem;
+$width: 10rem;
+
+
+
+.user-name {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  font-size: x-large;
+}
+
+.account-sidenav-container {
+  position: absolute;
+  top: 4rem;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+
+  .account-sidenav {
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15rem;
+
+    .pfp-wrapper {
+      margin: 1rem 1.5rem 1.5rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .img {
+        height: 12rem;
+        width: 12rem;
+        border-radius: 50%;
+      }
+
+      .label-wrapper {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        min-height: $height;
+        min-width: $width;
+        border-radius: 50%;
+        position: fixed;
+        top: 7rem;
+        overflow: hidden;
+
+        .img-input-label {
+          background-color: rgba(100,100,100,0.2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 11rem;
+          height: 1.2rem;
+          cursor: pointer;
+
+          .img-input {
+            display: none;
+            position: relative;
+            z-index: 1000;
+          }
+        }
+      }
+    }
+
+    .options-list {
+      margin-top: 1.5rem;
+      text-align: center;
+
+      .options-text {
+        margin-left: .5rem;
+      }
+    }
+  }
+
+  .message-history-wrapper {
+    padding: 0.5rem;
+    /* width */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+    }
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+
+    .messages {
+      max-height: 20rem;
+      overflow-y: auto;
+      border: 1px solid white;
+    }
+  }
+}
+
+.mat-tab-body-content {
+  max-height: 10rem;
+}
+.messages{
+    max-width: 18rem;
+    overflow: auto;
+}
+.account-settings {
+  margin-top: 3rem;
+  margin-left: 2rem;
+  display: flex;
+  justify-content: left;
+  font-size: xx-large;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 15rem;
+  margin-top: 3rem;
+  margin-left: 2rem;
+  font-size: medium;
+}
+
+.scheme-selector {
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.logout {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+
+@media screen and (max-width: 600px){
+    .pfp-wrapper{
+        top: 150px;
+    }
+}
+
+
+.lb {
+  background-color: lightblue;
+}
+
+.ind {
+  background-color: indigo;
+}
+
+.color-wrapper:hover {
+  background-color: white;
+}
+
+.light {
+  background-color: whitesmoke;
+}
+
+.dark {
+  background-color: black;
+}
+
+.test-input{
+    margin-top: 20rem;
+}
+
+

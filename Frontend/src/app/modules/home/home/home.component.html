@@ -1,0 +1,364 @@
+
+<div
+     tabindex="0"
+     class="body"
+     id="top"
+     (click)="saveInput($event)"
+     *ngIf="!mobile"
+     (dblclick)="scrollUp($event)"
+     (keyup.shift.t)="setFocusTo('main-content')"
+     (keyup.shift.c)="setFocusTo('chat')">
+
+  <div tabindex="0" class="skip-to-main-content" id="stmc" >
+    <button class="main-content-button" (keyup.enter)="shiftFocus('main-content')">Skip to Main Content</button>
+    <button class="main-content-button" (keyup.enter)="shiftFocus('chat-button')" >Skip to Chat Button</button>
+  </div>
+
+  <app-navbar class="nav">
+
+  </app-navbar>
+
+  <div class="content-wrapper" id="home">
+    <div class="top-arrow" *ngIf="notAtTop">
+      <mat-icon color="primary" (click)="scrollUp($event)" class="up-arrow">arrow_upward</mat-icon>
+    </div>
+
+    <div class="block1" id="block-top">
+      <div class="content1 mat-app-background">
+        <!-- Ugly, but shows how to use themes colors-->
+        <div class="title-content mat-app-background" id="title-content" (mouseenter)="toggleHover(true)" (mouseleave)="toggleHover(false)">
+          <p tabindex="0" class="text-title" id="main-content-start" (focus)="toggleSettings()">At Ungerboeck,</p>
+          <p tabindex="0" class="text-title">we offer </p>
+          <p tabindex="0" class="solutions mat-app-background">solutions</p>
+
+          <p tabindex="0" alt="Rotating list of all of the available solutions that Ungerboeck offers" class="solution" *ngIf="hover">{{solution}}</p>
+
+        </div>
+
+      </div>
+
+      <div class="down-bottom mat-app-background" id="down-bottom"></div>
+    </div>
+
+
+    <app-home-spacer [id]="10" [style]="'background-image: url(../../assets/images/Ungerboeck.jfif)'"></app-home-spacer>
+
+    <app-home-right id="CSM-elt"
+                    [title]="'CRM & SALES MANAGEMENT'"
+                    [text1]="'Leverage all sales opportunities'"
+                    [text2]="'Improve Your Sales Processes'"
+                    [text3]="'Client & Customer History Management'"
+                    [text4]="'Automate Your Processes, Cut Down on Mistakes and Save Time'"
+                    [link]="'https://ungerboeck.com/solutions/crm-and-sales-management'"></app-home-right>
+
+    <app-home-spacer [id]="150" [style]="''"></app-home-spacer>
+
+    <app-home-left id="Ca-elt"
+                   [title]="'CATERING'"
+                   [text1]="'Give sales the flexibility to sell'"
+                   [text2]="'Maintain menu control and margins'"
+                   [text3]="'Improve the customer experience'"
+                   [text4]="'Manage changes without paper cuts'"
+                    [link]="'https://ungerboeck.com/solutions/catering'">
+    </app-home-left>
+
+    <app-home-spacer [id]="300" [style]="''"></app-home-spacer>
+
+    <app-home-right id="BP-elt"
+                    [title]="'Billing & Payments'"
+                    [text1]="'Tailor schedules to meet client needs'"
+                    [text2]="'Create audit-ready invoices instantly'"
+                    [text3]="'Accept and process payments in one system'"
+                    [text4]="'Stay up-to-speed with unified collections'"
+                    [link]="'https://ungerboeck.com/solutions/billing-payment'"
+                    ></app-home-right>
+
+    <app-home-spacer [id]="550" [style]="''"></app-home-spacer>
+
+    <app-home-left id="SBM-elt"
+                   [title]="'SPACE BOOKING & MANAGEMENT'"
+                   [text1]="'Robust event space booking and visibility'"
+                   [text2]="'Easily manage layouts and room configurations'"
+                   [text3]="'One-stop shop to best manage the relationship between venues and their corporate suite clients'"
+                   [link]="'https://ungerboeck.com/solutions/space-booking-management'"
+                   ></app-home-left>
+
+    <app-home-spacer [id]="150" [style]="''"></app-home-spacer>
+
+    <app-home-right id="OS-elt"
+                    [title]="'OPERATION SUITE'"
+                   [text1]="'Account for every venue operation activity'"
+                   [text2]="'Simplify inventory management'"
+                   [text3]="'Ensure accurate delivery every time'"
+                   [text4]="'Unlock critical event information for operations and partners'"
+                    [link]="'https://ungerboeck.com/solutions/operation-suite'"
+                    ></app-home-right>
+
+    <app-home-spacer [id]="150" [style]="''"></app-home-spacer>
+
+    <app-home-left id="EFS-elt"
+                   [title]="'ERP & FINANCIAL SUITE'"
+                   [text1]="'Use AI to automate supplier invoice processing'"
+                   [text2]="'Manage spending with checks and approvals'"
+                   [text3]="'Automate employee expense tracking and reimbursements'"
+                   [text4]="'Be confident with accurate financial reporting'"
+                   [link]="'https://ungerboeck.com/solutions/financials-suite'"
+                   ></app-home-left>
+
+    <app-home-spacer [id]="150" [style]="''"></app-home-spacer>
+
+    <app-home-right id="EPC-elt"
+                    [title]="'EVENT PLANNING & COMMUNICATIONS'"
+                   [text1]="'Streamline the Event Planning Process'"
+                   [text2]="'Unlock Event Information'"
+                   [text3]="'Capture All Aspects of the Event'"
+                   [text4]="'Unite Back & Front of the House Operations'"
+                    [link]="'https://ungerboeck.com/solutions/event-planning-communications'"
+                    ></app-home-right>
+
+    <app-home-spacer [id]="150" [style]="''"></app-home-spacer>
+
+    <app-home-left id="SW-elt"
+                   [title]="'SHOWORKS'"
+                   [text1]="'Save time and eliminate errors.'"
+                   [text2]="'Watch the action unfold on the big screen.'"
+                   [text3]="'Exchange data with existing programs.'"
+                   [text4]="'Stay Organized with Digital Documents & Entries'"
+                   [link]="'https://ungerboeck.com/solutions/showorks'"
+                   ></app-home-left>
+
+    <app-home-spacer [id]="150" [style]="''"></app-home-spacer>
+
+    <app-home-right id="EM-elt"
+                    [title]="'EXHIBITION MANAGEMENT'"
+                   [text1]="'Import, Design, and Sell Booths in Exhibition Floor Plan, Then Share It With the World'"
+                   [text2]="'Purpose Built CRM'"
+                   [text3]="'Increase volume & value of exhibition orders'"
+                   [text4]="'Share Your Floor Plan With the World'"
+                    [link]="'https://ungerboeck.com/solutions/exhibition-management'"
+                    ></app-home-right>
+
+    <app-home-spacer [id]="150" [style]="''"></app-home-spacer>
+
+    <app-home-left id="AM-elt"
+                   [title]="'ATTENDEE MANAGEMENT'"
+                   [text1]="'As venues start to reopen, safety for staff and visitors is top of mind.'"
+                   [text2]="'Make check-in much more efficient'"
+                   [text3]="'Secure and accurate credit tracking'"
+                   [text4]="'Easily manage layouts and room configurations'"
+                   [link]="'https://ungerboeck.com/solutions/attendee-management'"
+                   ></app-home-left>
+
+    <app-home-spacer [id]="150" [style]="''"></app-home-spacer>
+
+    <app-home-right id="OM-elt"
+                    [title]="'ORDER MANAGEMENT'"
+                   [text1]="'Securing accurate orders, all the time'"
+                   [text2]="'Boost efficiency, reclaim revenue and cut the printer cord for good'"
+                   [text3]="'Increase volume & value of exhibition orders'"
+                   [text4]="'Accept and process payments in one system'"
+                    [link]="'https://ungerboeck.com/solutions/order-management'"
+                    ></app-home-right>
+
+    <app-home-spacer [id]="150" [style]="''"></app-home-spacer>
+
+    <app-home-left id="MM-elt"
+                   [title]="'MEMBERSHIP MANAGEMENT'"
+                   [text1]="'Members History & Account Management'"
+                   [text2]="'Improve the member experience'"
+                   [text3]="'Automate your membership renewals'"
+                   [text4]="'Integrate seamlessly with Registration and Event Management'"
+                   [link]="'https://ungerboeck.com/solutions/membership-management'"
+                   ></app-home-left>
+
+    <app-home-spacer [id]="150" [style]="''"></app-home-spacer>
+
+    <app-home-right id="Re-elt"
+                    [title]="'REGISTRATION'"
+                   [text1]="'Convert your events to virtual events'"
+                   [text2]="'As venues start to reopen, safety for staff and visitors is top of mind.'"
+                   [text3]="'Accurate and Powerful Conference CRM'"
+                   [text4]="'Accommodate group & guest event registration'"
+                    [link]="'https://ungerboeck.com/solutions/registration'"
+                    ></app-home-right>
+
+    <app-home-spacer [id]="150" [style]="''"></app-home-spacer>
+
+    <app-home-left id="UC-elt"
+                   [title]="'UNGERBOECK CLOUD'"
+                   [text1]="'Let our IT professionals manage your Ungerboeck instance'"
+                   [text2]="'We take care of compliance and security - so you don\'t have to'"
+                   [link]="'https://ungerboeck.com/solutions/ungerboeck-cloud'"
+                   ></app-home-left>
+
+    <app-home-spacer [id]="150" [style]="''"></app-home-spacer>
+
+    <app-home-right id="UA-elt"
+                    [title]="'UNGERBOECK API'"
+                   [text1]="'Seamless integrations to achieve your goals'"
+                   [text2]="'Enhance your Ungerboeck experience through business logic automation'"
+                   [text3]="'Developing solutions that make a difference.'"
+                    [link]="'https://ungerboeck.com/solutions/ungerboeck-api'"
+                    ></app-home-right>
+
+    <app-home-spacer [id]="150" [style]="''"></app-home-spacer>
+
+    <app-home-left id="UI-elt"
+                   [title]="'UNGERBOECK INTEGRATIONS'"
+                   [text1]="''"
+                   [text2]="''"
+                   [text3]="''"
+                   [text4]="''"
+                   [link]="'https://ungerboeck.com/solutions/ungerboeck-integrations'"
+                   ></app-home-left>
+
+    <app-home-spacer [id]="150" [style]="''"></app-home-spacer>
+  </div>
+</div>
+
+<div *ngIf="mobile">
+    <div class="mobile-body mat-app-background" id="mobile-body">
+      <div class="head">
+        <div class="title">
+          <p class="title-text">At Ungerboeck,</p>
+          <p class="title-text">we offer</p>
+          <p class="solutions">Solutions</p>
+        </div>
+        <div class="solution">{{solution}}</div>
+      </div>
+
+      <div class="threads" id="threads">
+        <div class="thread-wrapper" id="thread-wrapper">
+          <div class="thread-body">
+            <div class="thread-text">
+              CRM & SALES MANAGEMENT
+            </div>
+          </div>
+        </div>
+
+        <div class="thread-wrapper">
+          <div class="thread-body">
+            <div class="thread-text">
+              CATERING
+            </div>
+          </div>
+        </div>
+
+        <div class="thread-wrapper">
+          <div class="thread-body">
+            <div class="thread-text">
+              Billing & Payments
+            </div>
+          </div>
+        </div>
+
+        <div class="thread-wrapper">
+          <div class="thread-body">
+            <div class="thread-text">
+              SPACE BOOKING & MANAGEMENT
+            </div>
+          </div>
+        </div>
+
+        <div class="thread-wrapper">
+          <div class="thread-body">
+            <div class="thread-text">
+              OPERATION SUITE
+            </div>
+          </div>
+        </div>
+
+        <div class="thread-wrapper">
+          <div class="thread-body">
+            <div class="thread-text">
+              ERP & FINANCIAL SUITE
+            </div>
+          </div>
+        </div>
+
+        <div class="thread-wrapper">
+          <div class="thread-body">
+            <div class="thread-text">
+              EVENT PLANNING & COMMUNICATIONS
+            </div>
+          </div>
+        </div>
+
+        <div class="thread-wrapper">
+          <div class="thread-body">
+            <div class="thread-text">
+              CRM OR SOMETHING LIKE THAT
+            </div>
+          </div>
+        </div>
+
+        <div class="thread-wrapper">
+          <div class="thread-body">
+            <div class="thread-text">
+              CRM OR SOMETHING LIKE THAT
+            </div>
+          </div>
+        </div>
+
+        <div class="thread-wrapper">
+          <div class="thread-body">
+            <div class="thread-text">
+              CRM OR SOMETHING LIKE THAT
+            </div>
+          </div>
+        </div>
+
+        <div class="thread-wrapper">
+          <div class="thread-body">
+            <div class="thread-text">
+              CRM OR SOMETHING LIKE THAT
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="spacer"></div>
+      <div class="top-spacer"></div>
+      <div class="white-spacer mat-app-background"></div>
+
+      <div class="stationary-rope-wrapper">
+        <div class="still-thread"></div>
+        <div class="still-thread"></div>
+        <div class="still-thread"></div>
+        <div class="still-thread"></div>
+        <div class="still-thread"></div>
+        <div class="still-thread"></div>
+        <div class="still-thread"></div>
+        <div class="still-thread"></div>
+        <div class="still-thread"></div>
+        <div class="still-thread"></div>
+        <div class="still-thread"></div>
+        <div class="still-thread"></div>
+      </div>
+
+      <div class="bottom-spacer"></div>
+      <div class="ang-theme-bg-spacer mat-app-background"></div>
+
+      <div class="heavy-weight">
+        <p class="weight-text">1000lbs</p>
+      </div>
+
+      <div class="strong-solutions-wrapper">
+        <div class="strong-solutions">
+          Strong Solutions
+        </div>
+        <div class="strong-solutions-explanation">
+          If you want to learn which of our services is best for you,
+          chat with Ungerbot.
+        </div>
+      </div>
+      <div class="rope-strand">
+        <div class="top-part"></div>
+        <div class="bottom-part"></div>
+      </div>
+    </div>
+
+  </div>
+
+<app-chat-box  class="chat-box" id="chat-button" alt="Chat button - press enter"></app-chat-box>
+

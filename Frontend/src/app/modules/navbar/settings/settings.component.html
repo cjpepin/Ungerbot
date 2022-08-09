@@ -1,0 +1,51 @@
+
+<div class="settings-wrapper">
+  <div *ngIf="loggedIn">
+    <div class="slide-toggle">
+      <mat-slide-toggle tabindex="0"
+                        [(ngModel)]="toggleState"
+                        (click)="toggleDark()"
+                        (keyup.space)="toggleDark()">
+        <span *ngIf="dark == true">Dark</span>
+        <span *ngIf="dark != true">Light</span>
+      </mat-slide-toggle>
+    </div>
+
+    <div class="account">
+      <button mat-raised-button
+              tabindex="0"
+              class="button"
+              color="primary"
+              (keyup.enter)="goToBlank()"
+              (click)="goToBlank()">
+        Account Settings
+      </button>
+
+    </div>
+
+    <div *ngIf="admin" class="adminPage">
+      <button mat-raised-button
+              tabindex="0"
+              class="button"
+              color="primary"
+              (keyup.enter)="goToAdmin()"
+              (click)="goToAdmin()">
+        Admin Settings
+      </button>
+
+    </div>
+  </div>
+
+  <div class="logout">
+    <a class="logout-button"
+       mat-raised-button
+       tabindex="0"
+       color="warn"
+       (click)="logout()"
+       routerLink="/">
+      Logout
+    </a>
+  </div>
+
+
+</div>
